@@ -1,0 +1,29 @@
+# Typical File for extension: vscode-graphql & CodeGen!
+projects:
+  default:
+    schema:
+      - ${HTTP_ENDPOINT}/graphql
+    documents:
+      - '**/*.gql'
+    extensions:
+      endpoints:
+        default:
+          url: ${VITE_WWW_URL}/graphql
+      codegen:
+        generates:
+          ./src/lib/graphql/_kitql/graphqlTypes.ts:
+            plugins:
+              - typescript
+              - typescript-operations
+              - typed-document-node
+              - typescript-document-nodes
+
+          ./src/lib/graphql/_kitql/graphqlStores.ts:
+            plugins:
+              - '@kitql/graphql-codegen'
+            config:
+              importBaseTypesFrom: $lib/graphql/_kitql/graphqlTypes
+              operationPrefix: 'KQL_'
+
+        config:
+          useTypeImports: true
