@@ -14,7 +14,7 @@ text */
 	box-sizing: border-box;
 }
 
-body {
+/* body {
 	background-color: #242333;
 	display: flex;
 	flex-direction: column;
@@ -23,14 +23,14 @@ body {
 	justify-content: center;
 	height: 100vh;
 	font-family: 'Lato', 'sans-serif';
-}
+} */
 
 .seat {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
 
-.row {
+/* .row {
 	display: flex;
 }
 
@@ -48,9 +48,9 @@ body {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-}
+} */
 
-.seat.selected {
+/* .seat.selected {
 	background-color: #6feaf6;
 }
 
@@ -69,14 +69,14 @@ body {
 .seat:not(.occupied):hover {
 	cursor: pointer;
 	transform: scale(1.2);
-}
+} */
 
-.showcase .seat:not(.occupied):hover {
+/* .showcase .seat:not(.occupied):hover {
 	cursor: default;
 	transform: scale(1);
-}
+} */
 
-.showcase {
+/* .showcase {
 	background-color: rgba(0, 0, 0, 0.1);
 	padding: 5px 10px;
 	border-radius: 5px;
@@ -91,22 +91,22 @@ body {
 	align-items: center;
 	justify-content: center;
 	margin: 0 10px;
-}
+} */
 
-.showcase li small {
+/* .showcase li small {
 	margin-left: 10px;
-}
+} */
 
-.screen {
+/* .screen {
 	background-color: #fff;
 	height: 70px;
 	width: 100%;
 	margin: 15px 0;
 	transform: rotateX(-45deg);
 	box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
-}
+} */
 
-.container {
+/* .container {
 	perspective: 1000px;
 	margin-bottom: 30px;
 }
@@ -117,7 +117,7 @@ p.text {
 
 p.text span {
 	color: #6feaf6;
-}
+} */
 
 .box {
 	width: 1235px;
@@ -194,9 +194,9 @@ p.text span {
 	background: blue;
 }
 
-.active {
+/* .active {
 	background-color: pink;
-}
+} */
 </style>
 
 <script context="module">
@@ -488,6 +488,6 @@ function selectSeat(seat) {
 
 <div class="confirmContainer">
 	<div class="confirm">
-		<button>Confirm tickets</button>
+		<a href="{`/payment?movieName=${movieName}&price=${price}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${bookedSeats.length * price}`}">Confirm tickets</a>
 	</div>
 </div>
