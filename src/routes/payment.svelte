@@ -76,7 +76,7 @@
 </script>
 
 <script>
-    export let movieName, price, bookedSeats, count, total
+    export let movieName, price, bookedSeats, count, total  
 </script>
 
 <h1 class="div1">PAYMENT PAGE</h1>
