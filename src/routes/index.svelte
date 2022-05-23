@@ -1,48 +1,61 @@
 <style>
-
 .div0 {
-	background-color: rgb(66, 21, 191);
+	background-color: white;
 	height: 170px;
 	width: 100%;
 	margin: 2px 20px 20px 20px;
-	box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
+	box-shadow: 0 3px 10px white;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 }
 
 .div1 {
-	background-color: #ec4141;
+	background-color: white;
 	border-radius: 5px;
-	border-color: rgb(214, 193, 6);
+	border-color: white;
 	padding: 20px;
 	margin: 20px;
+	/* width: 80%; */
 }
 
 .div2 {
-	background-color: #0b2477;
+	background-color: white;
 	border-radius: 5px;
-	border-color: gold;
+	border-color: white;
 	padding: 20px;
 	margin-bottom: 20px;
-	border: 5px solid rgb(240, 223, 68);
+	/* border: 5px solid; */
 }
 .div3 {
-	background-color: #e95f5f;
+	background-color: white;
 	border-radius: 5px;
 	padding: 20px;
 	margin-bottom: 20px;
-	border: 5px solid rgb(240, 223, 68);
+	border: 5px solid white;
 	margin: 2px;
-	
 }
 .div4 {
 	background-color: #240be2;
 	border-radius: 5px;
 	padding: 20px;
 	margin-bottom: 20px;
-	height: 130px;
+	height: 100%;
+}
+
+.div5 {
+	height: 688px;
+	background: white;
+}
+
+.imgs {
+	height: 264px;
+	width: 582px;
+}
+
+.contact {
+	font-size: xx-large;
 }
 </style>
 
@@ -50,38 +63,52 @@
 let data = [
 	{
 		movies: [
-			{ id: 1, name: 'Avengers', cost: '150' },
-			{ id: 2, name: 'Avengers 2', cost: '180' },
-			{ id: 3, name: 'Avengers 3', cost: '200' },
-			{ id: 4, name: 'Avengers 4', cost: '250' }
+			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg' },
+			{ id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg' },
+			{ id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg' },
+			{ id: 4, name: 'Avengers 4', cost: '250', src: '/img/avengers4.jpg' },
+			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg' },
+			{ id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg' },
+			{ id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg' }
 		]
 	}
 ]
+
+// avengers1 = '/img/avengers1.jpg'
 
 function selectedMovie(movie) {
 	console.log(movie)
 }
 </script>
 
-<div class="div0">
-	<h1 class="text-8xl"><b>MOVIES</b></h1>
-</div>
-
-
-
-<div class="div1">
-	<div class="div2 grid grid-flow-row grid-cols-2">
-		{#each data as d}
-			{#each d.movies as m}
-				<div class="div3">
-					<a href="{`/seat-layout?movieName=${m.name}&price=${m.cost}`}"><h2 class="text-white text-2xl text-center">{m.name}</h2></a>
-					<p class="text-white text-2xl text-center">{m.cost}</p>
-				</div>
+<div class="div5">
+	<div class="div0">
+		<h1 class="text-8xl"><b>MOVIES</b></h1>
+	</div>
+	<!-- <img src="{Avengers1}" alt="avenger" /> -->
+	<div class="div1 self-center">
+		<div class="div2 grid grid-flow-row grid-cols-5 gap-4">
+			{#each data as d}
+				{#each d.movies as m}
+					<div class="div3">
+						<a href="{`/seat-layout?movieName=${m.name}&price=${m.cost}`}"
+							><img src="{m.src}" alt="{m.name} *" class="imgs" />
+							<h2 class="text-center text-2xl ">{m.name}</h2></a>
+						<p class="text-center text-2xl ">{m.cost}</p>
+					</div>
+				{/each}
 			{/each}
-		{/each}
+		</div>
+	</div>
+
+	<div class="div4">
+		<p class="text-center align-middle text-xl"><b>Any offer present will be shown here</b></p>
+		<p class="contact text-white"><b>Contact details:-</b></p>
+		<p class="contact text-white"><b>email:-</b> thisIsATest@gmail.com</p>
+		<p class="contact text-white">
+			<b>phone:-</b> +91-9888888888
+		</p>
 	</div>
 </div>
 
-<div class="div4">
-	<p class="text-center text-xl align-middle"><b>Any offer present will be shown here</b></p>
-</div>
+<!-- <img src="{`/img/avengers1.jpg`}" alt="avenger" class="imgs" /> -->

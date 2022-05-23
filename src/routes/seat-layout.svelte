@@ -488,6 +488,14 @@ function selectSeat(seat) {
 
 <div class="confirmContainer">
 	<div class="confirm">
-		<a href="{`/payment?movieName=${movieName}&price=${price}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${bookedSeats.length * price}`}">Confirm tickets</a>
+		{#if bookedSeats.length > 0}
+			<a
+				href="{`/payment?movieName=${movieName}&price=${price}&bookedSeats=${bookedSeats}&count=${
+					bookedSeats.length
+				}&total=${bookedSeats.length * price}`}">Confirm tickets</a>
+		{:else}
+			<p>select any seat</p>
+		{/if}
+		<!-- <a href="{`/payment?movieName=${movieName}&price=${price}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${bookedSeats.length * price}`}">Confirm tickets</a> -->
 	</div>
 </div>
