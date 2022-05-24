@@ -7,8 +7,9 @@
 	box-shadow: 0 3px 10px white;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
+	margin: auto;
 }
 
 .div1 {
@@ -16,8 +17,13 @@
 	border-radius: 5px;
 	border-color: white;
 	padding: 20px;
-	margin: 20px;
-	/* width: 80%; */
+	/* margin: 20px; */
+	width: 70%;
+	display: flex;
+	flex-wrap: wrap;
+	/* justify-content: space-evenly; */
+	align-items: center;
+	margin: auto;
 }
 
 .div2 {
@@ -26,12 +32,17 @@
 	border-color: white;
 	padding: 20px;
 	margin-bottom: 20px;
+	/* display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center; */
+	/* margin: auto; */
 	/* border: 5px solid; */
 }
 .div3 {
 	background-color: white;
 	border-radius: 5px;
-	padding: 20px;
+	/* padding: 20px; */
 	margin-bottom: 20px;
 	border: 5px solid white;
 	margin: 2px;
@@ -50,8 +61,9 @@
 }
 
 .imgs {
-	height: 264px;
-	width: 582px;
+	height: 372px;
+	width: 222px;
+	border-radius: 10px;
 }
 
 .contact {
@@ -63,13 +75,13 @@
 let data = [
 	{
 		movies: [
-			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg' },
-			{ id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg' },
-			{ id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg' },
-			{ id: 4, name: 'Avengers 4', cost: '250', src: '/img/avengers4.jpg' },
-			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg' },
-			{ id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg' },
-			{ id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg' }
+			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg', gener: 'action' },
+			{ id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg', gener: 'action/drama' },
+			{ id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg', gener: 'action' },
+			{ id: 4, name: 'Avengers 4', cost: '250', src: '/img/avengers4.jpg', gener: 'action/drama' },
+			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg', gener: 'action' }
+			// { id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg', gener: 'action' },
+			// { id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg', gener: 'action' }
 		]
 	}
 ]
@@ -86,15 +98,17 @@ function selectedMovie(movie) {
 		<h1 class="text-8xl"><b>MOVIES</b></h1>
 	</div>
 	<!-- <img src="{Avengers1}" alt="avenger" /> -->
-	<div class="div1 self-center">
+	<div class="div1">
+		<p class="ml-8 text-2xl"><b>Recomended movies</b></p>
 		<div class="div2 grid grid-flow-row grid-cols-5 gap-4">
 			{#each data as d}
 				{#each d.movies as m}
 					<div class="div3">
 						<a href="{`/seat-layout?movieName=${m.name}&price=${m.cost}`}"
 							><img src="{m.src}" alt="{m.name} *" class="imgs" />
-							<h2 class="text-center text-2xl ">{m.name}</h2></a>
-						<p class="text-center text-2xl ">{m.cost}</p>
+							<h2 class="text-center text-2xl "><b>{m.name}</b></h2></a>
+						<!-- <p class="text-center text-2xl "><b>₹{m.cost}</b></p> -->
+						<p class="text-center text-2xl text-black">{m.gener}</p>
 					</div>
 				{/each}
 			{/each}

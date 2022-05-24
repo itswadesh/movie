@@ -191,7 +191,7 @@ p.text span {
 	margin: 0 auto;
 	padding: 3em;
 	width: 100%;
-	background: blue;
+	background: rgb(150 148 221);
 }
 .dot {
 	height: 100px;
@@ -210,11 +210,11 @@ p.text span {
 
 <script context="module">
 export async function load({ url, params, fetch }) {
-	const movieName = url.searchParams.get('movieName')
+	const busName = url.searchParams.get('busName')
 	const price = url.searchParams.get('price')
 	return {
 		props: {
-			movieName,
+			busName,
 			price
 		}
 	}
@@ -222,7 +222,7 @@ export async function load({ url, params, fetch }) {
 </script>
 
 <script>
-export let movieName, price
+export let busName, price
 let bookedSeats = []
 let layout = [
 	{
@@ -801,23 +801,23 @@ let layout = [
 				column: 2
 			},
 			{
-				name: '...',
-				ghost: true,
+				name: 'J3',
+				ghost: false,
 				booked: false,
 				selected: false,
 				row: 1,
 				column: 3
 			},
 			{
-				name: '...',
-				ghost: true,
+				name: 'J4',
+				ghost: false,
 				booked: false,
 				selected: false,
 				row: 1,
 				column: 4
 			},
 			{
-				name: 'J3',
+				name: 'J5',
 				ghost: false,
 				booked: false,
 				selected: false,
@@ -825,7 +825,7 @@ let layout = [
 				column: 5
 			},
 			{
-				name: 'J4',
+				name: 'J6',
 				ghost: false,
 				booked: false,
 				selected: false,
@@ -833,7 +833,7 @@ let layout = [
 				column: 16
 			},
 			{
-				name: 'J5',
+				name: 'J7',
 				ghost: false,
 				booked: false,
 				selected: false,
@@ -859,7 +859,7 @@ function selectSeat(seat) {
 
 <div class="nameDetail">
 	<p>
-		<b> {movieName} === {price} </b>
+		<b> {busName} === {price} </b>
 	</p>
 </div>
 
@@ -927,7 +927,7 @@ function selectSeat(seat) {
 <div class="confirmContainer">
 	<div class="confirm">
 		<a
-			href="{`/payment?movieName=${movieName}&price=${price}&bookedSeats=${bookedSeats}&count=${
+			href="{`/payment-bus?busName=${busName}&price=${price}&bookedSeats=${bookedSeats}&count=${
 				bookedSeats.length
 			}&total=${bookedSeats.length * price}`}">Confirm tickets</a>
 	</div>

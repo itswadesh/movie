@@ -123,6 +123,11 @@ export let movieName, price, bookedSeats, count, total
 		<button class="div5">UPI apps</button>
 		<!-- <p>Mobile number: +91 98765 43210</p> -->
 	</div>
+	<div>
+		<p><b>Enter your contact details below:</b></p>
+		<input type="text" placeholder="Mobile number" />
+		<input type="text" placeholder="Email" />
+	</div>
 	<div class="div4">
 		<button class="text-white">conform to payment</button>
 	</div>
