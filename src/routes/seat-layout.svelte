@@ -87,7 +87,7 @@
 	margin-right: 20px;
 }
 
-.trapezoid {
+/* .trapezoid {
 	border-bottom: 50px solid rgba(252, 246, 246, 0.85);
 	border-left: 25px solid cyan;
 	border-right: 25px solid cyan;
@@ -95,7 +95,7 @@
 	width: 1068px;
 	background-color: cyan;
 	margin-top: 10px;
-}
+} */
 </style>
 
 <script context="module">
