@@ -11,8 +11,8 @@
 	padding-top: 1em;
 }
 .div2 {
-	width: 500px;
-	height: 400px;
+	/* width: 500px;
+	height: 400px; */
 	background: white;
 	border: 3em;
 	border-color: black;
@@ -92,43 +92,32 @@ export async function load({ url, params, fetch }) {
 </script>
 
 <script>
-export let movieName, price, bookedSeats, count, total
+export let bookedSeats, count, total, movieName
+total = +total
+let convenient = 22;
+let igst = 28;
+let tc = total + convenient
+let grandTotal = total + convenient*count + igst*total/100
 </script>
 
 <h1 class="div1">PAYMENT PAGE</h1>
 
-<div class="div1 grid grid-flow-row grid-cols-1">
-	<div class="div2">
-		<h3 class="mx-16">Details of the movie:</h3>
-		<!-- <p>Movie Name: {movieName}</p> -->
-		<p>Number of tickets booked are: {count}</p>
-		<p>booked seat numbers are: {bookedSeats}</p>
-		<p>Total amount to be paid is ₹ {total}</p>
-		<!-- <p>Mobile number: +91 98765 43210</p> -->
+<div class="div1">
+	<div class="grid grid-flow-row grid-cols-1 sm border-2 border-sky-500 bg-white pl-4 pt-3 pr-4 pb-3 m-4">
+		<!-- <div>Hi</div>
+		<div>Hello</div>
+		<div>Namaste</div> -->
+		<div>Movie name is: {movieName}</div>
+		<div>Booked seats are: {bookedSeats}</div>
+		<div>total number of seats: {count}</div>
+		<div>Total ammount: {total}</div>
 	</div>
-	<div class="div3">
-		<h3 class="mx-5">select payment method :</h3>
-		<!-- <p class="mx-5">Net Banking</p>
-        <p class="mx-5">Credit card</p>
-        <p class="mx-5">UPI apps</p> -->
-		<!-- <ul>
-			<li>Net Banking</li>
-			<li>Credit card</li>
-			<li>UPI apps</li>
-		</ul> -->
 
-		<!-- <p>Movie Name: {movieName}</p> -->
-		<button class="div5">Net Banking</button>
-		<button class="div5">Credit card</button>
-		<button class="div5">UPI apps</button>
-		<!-- <p>Mobile number: +91 98765 43210</p> -->
-	</div>
-	<div>
-		<p><b>Enter your contact details below:</b></p>
-		<input type="text" placeholder="Mobile number" />
-		<input type="text" placeholder="Email" />
-	</div>
-	<div class="div4">
-		<button class="text-white">conform to payment</button>
+	<div class="grid grid-flow-row grid-cols-1 sm border-2 border-sky-500 bg-white p-4 m-3">
+		<div>Total cost for seats = {total}</div>
+		<div>Convenient fee = {convenient * count}</div>
+		<div>(convenient fee is 22 rupees per seat)</div>
+		<div>IGST = {igst}%</div>
+		<div>Total ammount to be paid = {grandTotal}</div>
 	</div>
 </div>
