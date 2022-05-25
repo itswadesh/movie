@@ -73,6 +73,7 @@
 </style>
 
 <script context="module">
+	import Button from './../lib/ui/Button.svelte';
 export async function load({ url, params, fetch }) {
 	const movieName = url.searchParams.get('movieName')
 	const price = url.searchParams.get('price')
@@ -102,11 +103,11 @@ let grandTotal = total + convenient*count + igst*total/100
 
 <h1 class="div1">PAYMENT PAGE</h1>
 
-<div class="div1">
+<!-- <div class="div1">
 	<div class="grid grid-flow-row grid-cols-1 sm border-2 border-sky-500 bg-white pl-4 pt-3 pr-4 pb-3 m-4">
-		<!-- <div>Hi</div>
+		<div>Hi</div>
 		<div>Hello</div>
-		<div>Namaste</div> -->
+		<div>Namaste</div>
 		<div>Movie name is: {movieName}</div>
 		<div>Booked seats are: {bookedSeats}</div>
 		<div>total number of seats: {count}</div>
@@ -119,5 +120,40 @@ let grandTotal = total + convenient*count + igst*total/100
 		<div>(convenient fee is 22 rupees per seat)</div>
 		<div>IGST = {igst}%</div>
 		<div>Total ammount to be paid = {grandTotal}</div>
+	</div>
+</div> -->
+
+
+<div class="grid grid-cols-5 gap-4 bg-cyan-300 h-screen flex ...">
+	<div class="col-span-2 col-start-2 border-2 border-sky-500 bg-white	p-4 m-3 flex-none ...">
+		<div>Movie name is: {movieName}</div>
+		<div>Booked seats are: {bookedSeats}</div>
+		<div>total number of seats: {count}</div>
+		<div>Total ammount: {total}</div>
+	</div>
+	<div class="border-2 border-sky-500 bg-white p-4 m-3 flex-none ...">
+		<div>Total cost for seats = {total}</div>
+		<div>Convenient fee = {convenient * count}</div>
+		<div>(convenient fee is 22 rupees per seat)</div>
+		<div>IGST = {igst}%</div>
+		<div>Total ammount to be paid = {grandTotal}</div>
+	</div>
+	<div class="col-span-2 col-start-2 p-2 ml-4 flex-none ...">
+		<p><b>CONTACT Details:</b></p>
+		<input type="number" placeholder="Mobile Number">
+		<input type="text" placeholder="Email Address">
+	</div>
+	<div class="col-start-4 pt-2 flex-auto ...">
+		<b>Promotion code</b>
+		<input type="text" placeholder="write promotion code here">
+		<button class="bg-yellow-500 border-2 border-sky-500 p-2">Apply</button>
+	</div>
+	<div>
+		<div>
+			<button>Continue</button>
+		</div>
+		<div>
+			<button>Cancel</button>
+		</div>
 	</div>
 </div>
