@@ -1,0 +1,92 @@
+mutation saveMovie(
+  $id: String!
+  $active: Boolean
+  $banner: String
+  $cast: [String]
+  $description: String
+  $dimentions: [String]
+  $directorName: String
+  $generes: [String]
+  $images: [String]
+  $img: String
+  $languages: [ID]
+  $name: String
+  $popularity: Int
+  $position: Int
+  $releaseDate: String
+  $runtime: String
+  $status: String
+  $trailers: [TrailerIp]
+) {
+  saveMovie(
+    id: $id
+    active: $active
+    banner: $banner
+    cast: $cast
+    description: $description
+    dimentions: $dimentions
+    directorName: $directorName
+    generes: $generes
+    images: $images
+    img: $img
+    languages: $languages
+    name: $name
+    popularity: $popularity
+    position: $position
+    releaseDate: $releaseDate
+    runtime: $runtime
+    status: $status
+    trailers: $trailers
+  ) {
+    id
+    name
+    active
+    banner
+    cast
+    description
+    dimentions
+    directorName
+    generes
+    images
+    imagesCdn
+    img
+    imgCdn
+    languages
+    popularity
+    position
+    releaseDate
+    runtime
+    slug
+    status
+    trailers {
+      lang
+      url
+    }
+    vendor
+    store
+    createdAt
+    updatedAt
+  }
+}
+
+# {
+#   "id": "new",
+#   "banner": "test url",
+#   "cast": ["vidyut"],
+#   "description": "this movie is good",
+#   "dimentions": ["2D","3D"],
+#   "directorName": "rohit",
+#   "generes": ["horror","thrillr"],
+#   "images": ["a","b","c"],
+#   "img": "d",
+#   "languages": ["61dd50a92cafe61538b65918"],
+#   "name": "Commando Avatar",
+#   "popularity": 1,
+#   "position": 1,
+#   "releaseDate": "22-02-2022",
+#   "runtime": "2 Hours 35 min",
+#   "trailers": [{
+#     "url": "aa",
+#     "lang": "61dd50a92cafe61538b65918"
+#   }]
+# }

@@ -31,7 +31,7 @@
 	background-color: white;
 	border: 3em;
 	border-color: black;
-	/* margin: 20px; */
+	margin: 20px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -42,7 +42,7 @@
 	margin-bottom: 25px;
 }
 
-.div4 {
+/* .div4 {
 	width: 250px;
 	height: 50px;
 	background-color: blue;
@@ -70,6 +70,10 @@
 	margin-top: 25px;
 	margin-bottom: 25px;
 }
+
+.hr {
+	color: black;
+} */
 </style>
 
 <script context="module">
@@ -93,18 +97,43 @@ export async function load({ url, params, fetch }) {
 </script>
 
 <script>
+import { identity } from 'svelte/internal';
+
 export let bookedSeats, count, total, movieName
+let yes = false
 total = +total
-let convenient = 22;
-let igst = 28;
-let tc = total + convenient
-let grandTotal = total + convenient*count + igst*total/100
+let convenient = 22
+let igst = 28
+let limit = 0
+// let tc = total + convenient
+let grandTotalBefore = total + convenient * count + (igst * total) / 100
+let donation = 0
+let discount = 10
+// let promo = 'xyz'
+let grandTotalAfter = grandTotalBefore
+
+//
+
+import { promo, greeting } from './stores.js';
+// var x = document.getElementById('myText').value
+function promoCheck(promo) {
+	// console.log('Hello' )
+	// console.log(promo)
+	if(limit==0){
+		if(promo=='xyz'){
+			grandTotalAfter=grandTotalAfter - grandTotalAfter*discount/100
+			grandTotalAfter = grandTotalAfter
+			limit = 1
+		}
+	}
+}
 </script>
 
 <h1 class="div1">PAYMENT PAGE</h1>
 
-<!-- <div class="div1">
-	<div class="grid grid-flow-row grid-cols-1 sm border-2 border-sky-500 bg-white pl-4 pt-3 pr-4 pb-3 m-4">
+<!-- <div class="h-screen min-w-fit bg-cyan-400">
+	<div
+		class="sm m-4 grid grid-flow-row grid-cols-1 border-2 border-sky-500 bg-white pl-4 pt-3 pr-4 pb-3">
 		<div>Hi</div>
 		<div>Hello</div>
 		<div>Namaste</div>
@@ -114,7 +143,7 @@ let grandTotal = total + convenient*count + igst*total/100
 		<div>Total ammount: {total}</div>
 	</div>
 
-	<div class="grid grid-flow-row grid-cols-1 sm border-2 border-sky-500 bg-white p-4 m-3">
+	<div class="sm m-3 grid grid-flow-row grid-cols-1 border-2 border-sky-500 bg-white p-4">
 		<div>Total cost for seats = {total}</div>
 		<div>Convenient fee = {convenient * count}</div>
 		<div>(convenient fee is 22 rupees per seat)</div>
@@ -123,37 +152,72 @@ let grandTotal = total + convenient*count + igst*total/100
 	</div>
 </div> -->
 
-
-<div class="grid grid-cols-5 gap-4 bg-cyan-300 h-screen flex ...">
-	<div class="col-span-2 col-start-2 border-2 border-sky-500 bg-white	p-4 m-3 flex-none ...">
-		<div>Movie name is: {movieName}</div>
-		<div>Booked seats are: {bookedSeats}</div>
-		<div>total number of seats: {count}</div>
-		<div>Total ammount: {total}</div>
-	</div>
-	<div class="border-2 border-sky-500 bg-white p-4 m-3 flex-none ...">
-		<div>Total cost for seats = {total}</div>
-		<div>Convenient fee = {convenient * count}</div>
-		<div>(convenient fee is 22 rupees per seat)</div>
-		<div>IGST = {igst}%</div>
-		<div>Total ammount to be paid = {grandTotal}</div>
-	</div>
-	<div class="col-span-2 col-start-2 p-2 ml-4 flex-none ...">
-		<p><b>CONTACT Details:</b></p>
-		<input type="number" placeholder="Mobile Number">
-		<input type="text" placeholder="Email Address">
-	</div>
-	<div class="col-start-4 pt-2 flex-auto ...">
-		<b>Promotion code</b>
-		<input type="text" placeholder="write promotion code here">
-		<button class="bg-yellow-500 border-2 border-sky-500 p-2">Apply</button>
-	</div>
-	<div>
-		<div>
-			<button>Continue</button>
+<div class="h-screen bg-cyan-100">
+	<div class="grid grid-flow-row grid-cols-5 bg-cyan-100">
+		<div class="col-span-2 col-start-2 m-2 border-2 border-black p-2">
+			<div>Movie name is: {movieName}</div>
+			<div>Booked seats are: {bookedSeats}</div>
+			<div>total number of seats: {count}</div>
+			<div>Total ammount: {total}</div>
 		</div>
-		<div>
-			<button>Cancel</button>
+		<div class=" col-start-4 m-2 p-2 ">
+			<div><b>Total cost for seats</b> = {total}</div>
+			<div><b>Convenient fee</b> = {convenient * count}</div>
+			<div>(convenient fee is {convenient}rupees per seat)</div>
+			<div><b>IGST</b> = {igst}%</div>
+			<hr class="m-2" />
+			<div><b>Total ammount to be paid</b> = {grandTotalBefore}</div>
+			<hr class="m-2" />
+		</div>
+
+		<div class="col-span-2 col-start-2 m-2 p-2">
+			<div>
+				<p><b>Contact details:</b></p>
+				<input type="number" placeholder="Mobile number" />
+				<input type="text" placeholder="E-mail" />
+			</div>
+		</div>
+
+		<div class=" col-start-4 m-1 p-1">
+			<div class="mt-2">
+				<hr class="m-2" />
+				<p><b>Promotion code</b></p>
+				<input bind:value={$promo} />
+				<button on:click="{() => promoCheck($promo)}" class="m-0 border-2 bg-amber-600 p-2">Apply</button>
+				<hr class="m-2" />
+			</div>
+		</div>
+		<div class="col-start-4 m-2 p-2">
+			<div>
+				<hr class="m-2" />
+				<p><b>Donation for Covid Relief Fund: </b></p>
+				<input type="checkbox" bind:checked={yes} > I want to donate ₹10
+				<hr class="m-2" />
+			</div>
+		</div>
+		<div class="col-start-4 m-2 p-2">
+			<hr class="m-2" />
+			<!-- <div>
+				<p><b>Grand Total: {grandTotalAfter}</b></p>
+			</div> -->
+
+			{#if yes}
+			<div>
+				<p><b>Grand Total: {grandTotalAfter + 10}</b></p>
+			</div>
+			{:else}
+			<div>
+				<p><b>Grand Total: {grandTotalAfter}</b></p>
+			</div>
+			{/if}
+			<hr class="m-2" />
+		</div>
+		<div class="col-start-4">
+			<div>
+				<button class="m-2 bg-yellow-300 p-2"
+					><b>Continue &emsp</b> <b class="text-green-500">✔</b></button>
+				<a href="{`/seat-layout?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}`}" class="m-2 bg-red-100 p-2"><b>Cancel &emsp </b> <b>❌</b></a>
+			</div>
 		</div>
 	</div>
 </div>

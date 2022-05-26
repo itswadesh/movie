@@ -1,0 +1,30 @@
+query screenSeatCategory($id: ID!) {
+  screenSeatCategory(id: $id) {
+    id
+    name
+    objRow {
+      row
+      rowName
+      objSeat {
+        col
+        seatNo
+        seatType
+        reservedForSocialDistancing
+      }
+    }
+    screen {
+      id
+      name
+    }
+    vendor {
+      id
+    }
+    store {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}

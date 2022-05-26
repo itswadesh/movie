@@ -1,0 +1,47 @@
+query showLayout($id: ID!) {
+	showLayout(id: $id) {
+		id
+		startTime
+		durationInSeconds
+		movie {
+			id
+			name
+		}
+		screen {
+			id
+			name
+		}
+		pricing {
+			price
+			mrp
+			discount
+			tax
+			screenSeatCategory {
+				id
+				name
+				objRow {
+					row
+					rowName
+					objSeat {
+						col
+						seatNo
+						seatType
+						booked
+						ghost
+						reservedForSocialDistancing
+					}
+				}
+			}
+		}
+		vendor {
+			id
+		}
+		store {
+			id
+			name
+			email
+		}
+		createdAt
+		updatedAt
+	}
+}

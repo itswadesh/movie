@@ -1,0 +1,39 @@
+query myScreens(
+  $page: Int
+  $search: String
+  $limit: Int
+  $sort: String
+  $listing: ID
+  $store: ID
+) {
+  myScreens(
+    page: $page
+    search: $search
+    limit: $limit
+    sort: $sort
+    listing: $listing
+    store: $store
+  ) {
+    count
+    page
+    pageSize
+    data {
+      id
+      active
+      name
+      listing {
+        id
+      }
+      vendor {
+        id
+      }
+      store {
+        id
+        name
+        email
+      }
+      createdAt
+      updatedAt
+    }
+  }
+}

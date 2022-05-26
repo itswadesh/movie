@@ -1,0 +1,21 @@
+query screen($id: ID!) {
+  screen(id: $id) {
+    id
+    active
+    name
+    listing {
+      id
+      name
+    }
+    vendor {
+      id
+    }
+    store {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
