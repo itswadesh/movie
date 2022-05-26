@@ -1,0 +1,32 @@
+mutation deleteMovie($id: ID!) {
+  deleteMovie(id: $id) {
+    id
+    active
+    banner
+    cast
+    description
+    dimentions
+    directorName
+    generes
+    images
+    imagesCdn
+    img
+    imgCdn
+    languages
+    name
+    popularity
+    position
+    releaseDate
+    runtime
+    slug
+    status
+    trailers {
+      lang
+      url
+    }
+    vendor
+    store
+    createdAt
+    updatedAt
+  }
+}

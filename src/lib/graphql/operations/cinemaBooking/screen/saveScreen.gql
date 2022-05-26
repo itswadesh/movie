@@ -1,0 +1,23 @@
+mutation saveScreen(
+  $id: String!
+  $active: Boolean
+  $name: String
+  $listing: ID
+) {
+  saveScreen(id: $id, active: $active, name: $name, listing: $listing) {
+    id
+    active
+    name
+    listing
+    vendor
+    store
+    createdAt
+    updatedAt
+  }
+}
+
+# {
+#   "id": "new",
+#   "name": "Screen A",
+#   "listing": "627ea24ec761f4281c364e60"
+# }

@@ -1,0 +1,45 @@
+mutation saveShow(
+  $id: String!
+  $movie: ID
+  $screen: ID
+  $startTime: String
+  $durationInSeconds: Float
+  $pricing: [PricingIp]
+) {
+  saveShow(
+    id: $id
+    movie: $movie
+    screen: $screen
+    startTime: $startTime
+    durationInSeconds: $durationInSeconds
+    pricing: $pricing
+  ) {
+    id
+    movie
+    screen
+    startTime
+    durationInSeconds
+    pricing {
+      screenSeatCategory
+      price
+      mrp
+      discount
+      tax
+    }
+    vendor
+    store
+    createdAt
+    updatedAt
+  }
+}
+
+# {
+#   "id": "new",
+#   "movie": "627ea39d23f3572a04e71875",
+#   "screen": "627f4dfdfa53b74918e18993",
+#   "pricing": [{
+#     "screenSeatCategory": "627f7a57ac7fe32ea8dbec14",
+#     "price": 50,
+#     "mrp": 100
+#   }]
+# }

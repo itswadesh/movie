@@ -1,0 +1,75 @@
+mutation bookSeatsInTheatre($showId: ID!, $screenSeats: [seatsIp]) {
+  bookSeatsInTheatre(showId: $showId, screenSeats: $screenSeats) {
+    id
+    amount {
+      total
+      discount
+      totalDiscount
+      subtotal
+      tax
+      currency
+    }
+    amountDue
+    amountPaid
+    paid
+    paymentAmount
+    paymentCurrency
+    paymentGateway #razorpay, cashfree, paytm , stripe
+    paymentMode # pay_at_theatre  /online
+    paymentMsg
+    paymentOrderId
+    paymentReceipt
+    paymentReferenceId #Transaction Id
+    paymentStatus
+    paymentTime
+    paySuccess
+    totalAmountRefunded
+    amountRefunded
+    cancellationComment
+    cancellationReason
+    # refunds: [RefundDocument['_id']]
+    invoiceLink
+    posInvoiceNo
+    invoiceId
+    orderNo
+    otp
+    seatsBooked
+    bookingStatus
+    reviewed
+    # user
+    userFirstName
+    userLastName
+    userPhone
+    userEmail
+    # vendor
+    vendorPhone
+    vendorEmail
+    vendorSlug
+    vendorBusinessName
+    vendorCommissionType
+    vendorCommissionValue
+    # store
+    createdAt
+    updatedAt
+    seats {
+      col
+      row
+      seatNo
+      seatType
+      price
+      mrp
+      categoryName
+    }
+  }
+}
+
+# {
+#   "showId": "628c801b9c404c2740a9ce49",
+#   "screenSeats": [{
+#     "screenSeatCategory": "628c7ebd9c404c2740a9ce1f",
+#     "seatNo": ["P3","P1"]
+#   },{
+#     "screenSeatCategory": "628c7f2e9c404c2740a9ce2f",
+#     "seatNo": ["Q1"]
+#   }]
+# }

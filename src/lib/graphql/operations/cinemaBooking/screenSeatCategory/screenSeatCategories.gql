@@ -1,0 +1,25 @@
+query screenSeatCategories($page: Int, $search: String, $limit: Int, $sort: String, $screen: ID!) {
+	screenSeatCategories(page: $page, search: $search, limit: $limit, sort: $sort, screen: $screen) {
+		count
+		page
+		pageSize
+		data {
+			id
+			name
+			position
+			screen {
+				id
+			}
+			objRow {
+				row
+				rowName
+				objSeat {
+					col
+					seatNo
+					seatType
+					reservedForSocialDistancing
+				}
+			}
+		}
+	}
+}

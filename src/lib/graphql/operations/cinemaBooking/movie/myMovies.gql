@@ -1,0 +1,58 @@
+query myMovies(
+  $page: Int
+  $search: String
+  $limit: Int
+  $sort: String
+  $store: ID
+) {
+  myMovies(
+    page: $page
+    search: $search
+    limit: $limit
+    sort: $sort
+    store: $store
+  ) {
+    count
+    page
+    pageSize
+    data {
+      id
+      active
+      banner
+      cast
+      description
+      dimentions
+      directorName
+      generes
+      images
+      imagesCdn
+      img
+      imgCdn
+      languages
+      name
+      popularity
+      position
+      releaseDate
+      runtime
+      slug
+      status
+      trailers {
+        lang {
+          id
+          name
+        }
+        url
+      }
+      createdAt
+      updatedAt
+      vendor {
+        id
+      }
+      store {
+        id
+        name
+        email
+      }
+    }
+  }
+}

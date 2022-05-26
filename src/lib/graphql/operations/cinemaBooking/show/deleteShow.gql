@@ -1,0 +1,20 @@
+mutation deleteShow($id: ID!) {
+  deleteShow(id: $id) {
+    id
+    movie
+    screen
+    startTime
+    durationInSeconds
+    pricing {
+      screenSeatCategory
+      price
+      mrp
+      discount
+      tax
+    }
+    vendor
+    store
+    createdAt
+    updatedAt
+  }
+}

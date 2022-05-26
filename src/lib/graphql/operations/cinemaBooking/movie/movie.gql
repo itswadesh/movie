@@ -1,0 +1,41 @@
+query movie($id: ID!) {
+  movie(id: $id) {
+    id
+    active
+    banner
+    cast
+    description
+    dimentions
+    directorName
+    generes
+    images
+    imagesCdn
+    img
+    imgCdn
+    languages
+    name
+    popularity
+    position
+    releaseDate
+    runtime
+    slug
+    status
+    trailers {
+      lang {
+        id
+        name
+      }
+      url
+    }
+    createdAt
+    updatedAt
+    vendor {
+      id
+    }
+    store {
+      id
+      name
+      email
+    }
+  }
+}

@@ -1,0 +1,11 @@
+mutation deleteScreenSeatCategory($id: ID!) {
+  deleteScreenSeatCategory(id: $id) {
+    id
+    name
+    screen
+    vendor
+    store
+    createdAt
+    updatedAt
+  }
+}

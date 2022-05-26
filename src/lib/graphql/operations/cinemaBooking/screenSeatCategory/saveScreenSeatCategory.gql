@@ -1,0 +1,106 @@
+mutation saveScreenSeatCategory(
+	$id: String!
+	$active: Boolean
+	$name: String
+	$screen: ID
+	$position: Int
+	$objRow: [ObjRowIp]
+) {
+	saveScreenSeatCategory(
+		id: $id
+		active: $active
+		name: $name
+		screen: $screen
+		position: $position
+		objRow: $objRow
+	) {
+		id
+		name
+		screen
+		vendor
+		store
+		createdAt
+		updatedAt
+		objRow {
+			row
+			rowName
+			objSeat {
+				col
+				ghost
+				seatNo
+				seatType
+				reservedForSocialDistancing
+			}
+		}
+	}
+}
+
+# {
+#   "id": "new",
+#   "active": true,
+#   "name": "VIP",
+#   "position": 1,
+#   "screen": "627f4cd9bebb553d146f88d6",
+#   "objRow": [{
+#     "row": 1,
+#     "rowName": "J",
+#     "objSeat": [{
+#       "col": 1,
+#       "seatNo": "P1"
+#     },{
+#       "col": 2,
+#       "seatNo": "P2"
+#     },{
+#       "col": 3,
+#       "seatNo": "P3"
+#     }]
+#   },{
+#     "row": 2,
+#     "rowName": "I",
+#     "objSeat": [{
+#       "col": 1,
+#       "seatNo": "R1"
+#     },{
+#       "col": 2,
+#       "seatNo": "R2"
+#     },{
+#       "col": 3,
+#       "seatNo": "R3"
+#     }]
+#   }]
+# }
+
+# {
+#   "id": "new",
+#   "active": true,
+#   "name": "PREMIUM",
+#   "position": 1,
+#   "screen": "627f4cd9bebb553d146f88d6",
+#   "objRow": [{
+#     "row": 3,
+#     "rowName": "H",
+#     "objSeat": [{
+#       "col": 1,
+#       "seatNo": "Q1"
+#     },{
+#       "col": 2,
+#       "seatNo": "Q2"
+#     },{
+#       "col": 3,
+#       "seatNo": "Q3"
+#     }]
+#   },{
+#     "row": 4,
+#     "rowName": "G",
+#     "objSeat": [{
+#       "col": 1,
+#       "seatNo": "R1"
+#     },{
+#       "col": 2,
+#       "seatNo": "R2"
+#     },{
+#       "col": 3,
+#       "seatNo": "R3"
+#     }]
+#   }]
+# }

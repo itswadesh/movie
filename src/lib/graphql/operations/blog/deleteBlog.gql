@@ -1,3 +1,5 @@
 mutation deleteBlog($id: ID!) {
-  deleteBlog(id: $id)
+	deleteBlog(id: $id) {
+		id
+	}
 }

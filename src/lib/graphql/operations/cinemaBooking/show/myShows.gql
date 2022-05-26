@@ -1,0 +1,57 @@
+query myShows(
+  $page: Int
+  $search: String
+  $limit: Int
+  $sort: String
+  $movie: ID
+  $screen: ID
+  $store: ID
+) {
+  myShows(
+    page: $page
+    search: $search
+    limit: $limit
+    sort: $sort
+    movie: $movie
+    screen: $screen
+    store: $store
+  ) {
+    count
+    page
+    pageSize
+    data {
+      id
+      startTime
+      durationInSeconds
+      pricing {
+        screenSeatCategory {
+          id
+          name
+        }
+        price
+        mrp
+        discount
+        tax
+      }
+      movie {
+        id
+        name
+      }
+      screen {
+        id
+        name
+      }
+      vendor {
+        id
+        businessName
+      }
+      store {
+        id
+        name
+        email
+      }
+      createdAt
+      updatedAt
+    }
+  }
+}

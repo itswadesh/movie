@@ -1,0 +1,12 @@
+mutation deleteScreen($id: ID!) {
+  deleteScreen(id: $id) {
+    id
+    active
+    name
+    listing
+    vendor
+    store
+    createdAt
+    updatedAt
+  }
+}
