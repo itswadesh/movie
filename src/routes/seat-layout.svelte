@@ -104,7 +104,7 @@ import { KQL_ShowLayout } from '$lib/graphql/_kitql/graphqlStores'
 export async function load({ url, params, fetch }) {
 	const movieName = url.searchParams.get('movieName')
 	const price = url.searchParams.get('price')
-	await KQL_ShowLayout.query({ variables: { movie: movieName } })
+	// await KQL_ShowLayout.query({ variables: { movie= movieName } })
 	return {
 		props: {
 			movieName,

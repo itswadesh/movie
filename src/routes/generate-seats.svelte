@@ -55,6 +55,8 @@ function generateSeats(row, col) {
 function toggleGhostSeatStatus(rowIndex, colIndex, col) {
 	seatCategory.rowArray[rowIndex].objSeat[colIndex].ghost =
 		!seatCategory.rowArray[rowIndex].objSeat[colIndex].ghost
+	seatCategory.rowArray[rowIndex].objSeat[colIndex + 1] =
+		seatCategory.rowArray[rowIndex].objSeat[colIndex]
 }
 </script>
 
