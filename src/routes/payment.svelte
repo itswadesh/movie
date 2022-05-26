@@ -31,7 +31,7 @@
 	background-color: white;
 	border: 3em;
 	border-color: black;
-	/* margin: 20px; */
+	margin: 20px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -42,7 +42,7 @@
 	margin-bottom: 25px;
 }
 
-.div4 {
+/* .div4 {
 	width: 250px;
 	height: 50px;
 	background-color: blue;
@@ -73,10 +73,11 @@
 
 .hr {
 	color: black;
-}
+} */
 </style>
 
 <script context="module">
+	import Button from './../lib/ui/Button.svelte';
 export async function load({ url, params, fetch }) {
 	const movieName = url.searchParams.get('movieName')
 	const price = url.searchParams.get('price')
@@ -96,19 +97,35 @@ export async function load({ url, params, fetch }) {
 </script>
 
 <script>
+import { identity } from 'svelte/internal';
+
 export let bookedSeats, count, total, movieName
+let yes = false
 total = +total
 let convenient = 22
 let igst = 28
+let limit = 0
 // let tc = total + convenient
 let grandTotalBefore = total + convenient * count + (igst * total) / 100
 let donation = 0
 let discount = 10
-let promo = 'xyz'
+// let promo = 'xyz'
 let grandTotalAfter = grandTotalBefore
+
+//
+
+import { promo, greeting } from './stores.js';
 // var x = document.getElementById('myText').value
-function promoCheck() {
-	console.log('Hello')
+function promoCheck(promo) {
+	// console.log('Hello' )
+	// console.log(promo)
+	if(limit==0){
+		if(promo=='xyz'){
+			grandTotalAfter=grandTotalAfter - grandTotalAfter*discount/100
+			grandTotalAfter = grandTotalAfter
+			limit = 1
+		}
+	}
 }
 </script>
 
@@ -165,8 +182,8 @@ function promoCheck() {
 			<div class="mt-2">
 				<hr class="m-2" />
 				<p><b>Promotion code</b></p>
-				<input type="text" placeholder="Enter your code here" value="promo" />
-				<button on:click="{() => promoCheck}" class="m-0 border-2 bg-amber-600 p-2">Apply</button>
+				<input bind:value={$promo} />
+				<button on:click="{() => promoCheck($promo)}" class="m-0 border-2 bg-amber-600 p-2">Apply</button>
 				<hr class="m-2" />
 			</div>
 		</div>
@@ -174,22 +191,32 @@ function promoCheck() {
 			<div>
 				<hr class="m-2" />
 				<p><b>Donation for Covid Relief Fund: </b></p>
-				<input type="checkbox" /> I want to donate ₹10
+				<input type="checkbox" bind:checked={yes} > I want to donate ₹10
 				<hr class="m-2" />
 			</div>
 		</div>
 		<div class="col-start-4 m-2 p-2">
 			<hr class="m-2" />
+			<!-- <div>
+				<p><b>Grand Total: {grandTotalAfter}</b></p>
+			</div> -->
+
+			{#if yes}
+			<div>
+				<p><b>Grand Total: {grandTotalAfter + 10}</b></p>
+			</div>
+			{:else}
 			<div>
 				<p><b>Grand Total: {grandTotalAfter}</b></p>
 			</div>
+			{/if}
 			<hr class="m-2" />
 		</div>
 		<div class="col-start-4">
 			<div>
 				<button class="m-2 bg-yellow-300 p-2"
 					><b>Continue &emsp</b> <b class="text-green-500">✔</b></button>
-				<button class="m-2 bg-red-100 p-2"><b>Cancel &emsp </b> <b>❌</b></button>
+				<a href="{`/seat-layout?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}`}" class="m-2 bg-red-100 p-2"><b>Cancel &emsp </b> <b>❌</b></a>
 			</div>
 		</div>
 	</div>
