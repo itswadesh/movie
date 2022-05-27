@@ -77,7 +77,7 @@
 </style>
 
 <script context="module">
-	import Button from './../lib/ui/Button.svelte';
+import Button from './../lib/ui/Button.svelte'
 export async function load({ url, params, fetch }) {
 	const movieName = url.searchParams.get('movieName')
 	const price = url.searchParams.get('price')
@@ -97,7 +97,7 @@ export async function load({ url, params, fetch }) {
 </script>
 
 <script>
-import { identity } from 'svelte/internal';
+import { identity } from 'svelte/internal'
 
 export let bookedSeats, count, total, movieName
 let yes = false
@@ -114,14 +114,14 @@ let grandTotalAfter = grandTotalBefore
 
 //
 
-import { promo, greeting } from './stores.js';
+import { promo, greeting } from './stores.js'
 // var x = document.getElementById('myText').value
 function promoCheck(promo) {
 	// console.log('Hello' )
 	// console.log(promo)
-	if(limit==0){
-		if(promo=='xyz'){
-			grandTotalAfter=grandTotalAfter - grandTotalAfter*discount/100
+	if (limit == 0) {
+		if (promo == 'xyz') {
+			grandTotalAfter = grandTotalAfter - (grandTotalAfter * discount) / 100
 			grandTotalAfter = grandTotalAfter
 			limit = 1
 		}
@@ -182,8 +182,9 @@ function promoCheck(promo) {
 			<div class="mt-2">
 				<hr class="m-2" />
 				<p><b>Promotion code</b></p>
-				<input bind:value={$promo} />
-				<button on:click="{() => promoCheck($promo)}" class="m-0 border-2 bg-amber-600 p-2">Apply</button>
+				<input bind:value="{$promo}" />
+				<button on:click="{() => promoCheck($promo)}" class="m-0 border-2 bg-amber-600 p-2"
+					>Apply</button>
 				<hr class="m-2" />
 			</div>
 		</div>
@@ -191,7 +192,7 @@ function promoCheck(promo) {
 			<div>
 				<hr class="m-2" />
 				<p><b>Donation for Covid Relief Fund: </b></p>
-				<input type="checkbox" bind:checked={yes} > I want to donate ₹10
+				<input type="checkbox" bind:checked="{yes}" /> I want to donate ₹10
 				<hr class="m-2" />
 			</div>
 		</div>
@@ -202,13 +203,13 @@ function promoCheck(promo) {
 			</div> -->
 
 			{#if yes}
-			<div>
-				<p><b>Grand Total: {grandTotalAfter + 10}</b></p>
-			</div>
+				<div>
+					<p><b>Grand Total: {grandTotalAfter + 10}</b></p>
+				</div>
 			{:else}
-			<div>
-				<p><b>Grand Total: {grandTotalAfter}</b></p>
-			</div>
+				<div>
+					<p><b>Grand Total: {grandTotalAfter}</b></p>
+				</div>
 			{/if}
 			<hr class="m-2" />
 		</div>
@@ -216,7 +217,9 @@ function promoCheck(promo) {
 			<div>
 				<button class="m-2 bg-yellow-300 p-2"
 					><b>Continue &emsp</b> <b class="text-green-500">✔</b></button>
-				<a href="{`/seat-layout?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}`}" class="m-2 bg-red-100 p-2"><b>Cancel &emsp </b> <b>❌</b></a>
+				<a
+					href="{`/seat-layout?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}`}"
+					class="m-2 bg-red-100 p-2"><b>Cancel &emsp </b> <b>❌</b></a>
 			</div>
 		</div>
 	</div>
