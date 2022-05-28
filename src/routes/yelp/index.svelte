@@ -1,34 +1,63 @@
+<style>
+.left {
+	float: left;
+	width: 15%;
+}
+
+.main {
+	float: left;
+	width: 48%;
+}
+
+.right {
+	float: left;
+	width: 37%;
+	padding-left: 10px;
+}
+
+/* @media screen and (max-width: 1325px) {
+	.left,
+	.main,
+	.right {
+		width: 100%; /*The width is 100%, when the viewport is 800px or smaller,    1321 
+	}
+} */
+
+@media screen and (max-width: 1325px) {
+	.main {
+		width: 60%; /*The width is 100%, when the viewport is 800px or smaller,    1321 */
+	}
+}
+
+@media screen and (max-width: 1325px) {
+	.right {
+		width: 40%; /*The width is 100%, when the viewport is 800px or smaller,    1321 */
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.main {
+		width: 100%; /*The width is 100%, when the viewport is 800px or smaller,    1321 */
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.right {
+		width: 100%; /*The width is 100%, when the viewport is 800px or smaller,    1321 */
+	}
+}
+</style>
+
 <script>
 import Content from './_Content.svelte'
 
 import Filters from './_Filters.svelte'
+import Filters2 from './_Filters2.svelte'
 import Map from './_Map.svelte'
+import MediaQuery from './mediaQuery.svelte'
 </script>
 
-<style>
-.left {
-  float: left;
-  width: 20%;
-}
-
-.main {
-  float: left;
-  width: 45%;
-}
-
-.right {
-  float: left;
-  width: 35%;
-}
-
-@media screen and (max-width: 1000px) {
-  .left, .main, .right {
-    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-  }
-}
-</style>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <h1>Best Delivery</h1>
 <hr />
@@ -39,7 +68,23 @@ import Map from './_Map.svelte'
 </div> -->
 
 <div>
-	<div class="left"><Filters /></div>
+	<MediaQuery query="(min-width: 1325px)" let:matches>
+		{#if matches}
+			<div class="left default p-3">
+				<Filters />
+			</div>
+		{/if}
+	</MediaQuery>
+
+	<MediaQuery query="(max-width: 1325px)" let:matches>
+		{#if matches}
+			<div class="default">
+				<Filters2 />
+			</div>
+		{/if}
+	</MediaQuery>
+
+	<!-- <div class="left "><Filters /></div> -->
 	<div class="main"><Content /></div>
 	<div class="right"><Map /></div>
 </div>

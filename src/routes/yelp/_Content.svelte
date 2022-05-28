@@ -1,3 +1,9 @@
+<style>
+.hover:hover {
+	box-shadow: 2px 2px 2px 2px rgb(192, 189, 189);
+}
+</style>
+
 <script>
 let recomended = [
 	{ id: 1, text: `Recomended` },
@@ -40,8 +46,9 @@ let n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 <div>
 	{#each n as m}
-		<div class="col-span-3 col-start-2 row-start-2  ">
-			<div class="m-2 grid h-auto grid-flow-row grid-cols-3 border-2 border-black p-2">
+		<div class="col-span-3 col-start-2 row-start-2 ">
+			<div
+				class="hover m-8 grid h-auto grid-flow-row grid-cols-3 rounded-lg border-2 border-gray-300 p-8 ">
 				<div class="col-start-1"><img src="/img/food1.jpg" alt="f1" /></div>
 				<div class="col-span-2 col-start-2 row-start-1 p-2">
 					<div><button class="text-4xl"> <b>Sausy Green</b></button></div>
