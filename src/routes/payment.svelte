@@ -10,9 +10,9 @@
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	padding-top: 1em;
 }
-.div2 {
-	/* width: 500px;
-	height: 400px; */
+/* .div2 {
+	width: 500px;
+	height: 400px;
 	background: white;
 	border: 3em;
 	border-color: black;
@@ -40,7 +40,7 @@
 	margin-right: 150px;
 	margin-top: 25px;
 	margin-bottom: 25px;
-}
+} */
 
 /* .div4 {
 	width: 250px;
@@ -97,7 +97,7 @@ export async function load({ url, params, fetch }) {
 </script>
 
 <script>
-import { identity } from 'svelte/internal'
+// import { identity } from 'svelte/internal'
 
 export let bookedSeats, count, total, movieName
 let yes = false

@@ -203,6 +203,11 @@ p.text span {
 	display: inline-block;
 }
 
+@media screen and (min-width: 1959px) {
+	.theatre {
+		width: 80%; /*The width is 100%, when the viewport is 800px or smaller,    1321 */
+	}
+}
 /* .active {
 	background-color: pink;
 } */
@@ -912,23 +917,29 @@ function selectSeat(seat) {
 	{/each}
 {/each} -->
 
-<div>
-	<p class="details">
-		No. of tickets booked : {bookedSeats.length} <br />
-	</p>
-	<p class="details">
-		total cost= {bookedSeats.length * price}
-	</p>
-	<p class="details">
-		Selected seats : {bookedSeats}
-	</p>
-</div>
+<div class="theatre">
+	<div>
+		<p class="details">
+			No. of tickets booked : {bookedSeats.length} <br />
+		</p>
+		<p class="details">
+			total cost= {bookedSeats.length * price}
+		</p>
+		<p class="details">
+			Selected seats : {bookedSeats}
+		</p>
+	</div>
 
-<div class="confirmContainer">
-	<div class="confirm">
-		<a
-			href="{`/payment-bus?busName=${busName}&price=${price}&bookedSeats=${bookedSeats}&count=${
-				bookedSeats.length
-			}&total=${bookedSeats.length * price}`}">Confirm tickets</a>
+	<div class="confirmContainer">
+		<div class="confirm">
+			{#if bookedSeats.length > 0}
+				<a
+					href="{`/payment-bus?busName=${busName}&price=${price}&bookedSeats=${bookedSeats}&count=${
+						bookedSeats.length
+					}&total=${bookedSeats.length * price}`}">Confirm tickets</a>
+			{:else}
+				<p>select any seat</p>
+			{/if}
+		</div>
 	</div>
 </div>

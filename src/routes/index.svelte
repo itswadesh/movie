@@ -18,7 +18,7 @@
 	border-color: white;
 	padding: 20px;
 	/* margin: 20px; */
-	width: 70%;
+	width: 67%;
 	display: flex;
 	flex-wrap: wrap;
 	/* justify-content: space-evenly; */
