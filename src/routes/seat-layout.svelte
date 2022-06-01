@@ -103,19 +103,19 @@ import { KQL_ShowLayout } from '$lib/graphql/_kitql/graphqlStores'
 
 export async function load({ url, params, fetch }) {
 	const movieName = url.searchParams.get('movieName')
-	const price = url.searchParams.get('price')
+	const movieTime = url.searchParams.get('movieTime')
 	// await KQL_ShowLayout.query({ variables: { movie= movieName } })
 	return {
 		props: {
 			movieName,
-			price
+			movieTime
 		}
 	}
 }
 </script>
 
 <script>
-export let movieName, price
+export let movieName, movieTime
 let total = 0
 let bookedSeats = []
 let layout = [
@@ -856,7 +856,7 @@ function selectSeat(seat) {
 
 <div class="nameDetail">
 	<p>
-		<b> {movieName} === {price} </b>
+		<b> {movieName} === {movieTime} </b>
 	</p>
 </div>
 
@@ -944,7 +944,7 @@ function selectSeat(seat) {
 	<div class="confirm">
 		{#if bookedSeats.length > 0}
 			<a
-				href="{`/payment?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}`}"
+				href="{`/payment?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}&movieTime=${movieTime}`}"
 				>Confirm tickets</a>
 		{:else}
 			<p>select any seat</p>

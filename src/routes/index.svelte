@@ -75,11 +75,46 @@
 let data = [
 	{
 		movies: [
-			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg', gener: 'action' },
-			{ id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg', gener: 'action/drama' },
-			{ id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg', gener: 'action' },
-			{ id: 4, name: 'Avengers 4', cost: '250', src: '/img/avengers4.jpg', gener: 'action/drama' },
-			{ id: 1, name: 'Avengers', cost: '150', src: '/img/avengers1.jpg', gener: 'action' }
+			{
+				id: 1,
+				time: '7:00 AM',
+				name: 'Avengers',
+				cost: '150',
+				src: '/img/avengers1.jpg',
+				gener: 'action'
+			},
+			{
+				id: 2,
+				time: '10:30 AM',
+				name: 'Avengers 2',
+				cost: '180',
+				src: '/img/avengers2.jpg',
+				gener: 'action/drama'
+			},
+			{
+				id: 3,
+				time: '1:00 PM',
+				name: 'Avengers 3',
+				cost: '200',
+				src: '/img/avengers3.jpg',
+				gener: 'action'
+			},
+			{
+				id: 4,
+				time: '3:30 PM',
+				name: 'Avengers 4',
+				cost: '250',
+				src: '/img/avengers4.jpg',
+				gener: 'action/drama'
+			},
+			{
+				id: 1,
+				time: '6:30 PM',
+				name: 'Avengers',
+				cost: '150',
+				src: '/img/avengers1.jpg',
+				gener: 'action'
+			}
 			// { id: 2, name: 'Avengers 2', cost: '180', src: '/img/avengers2.jpg', gener: 'action' },
 			// { id: 3, name: 'Avengers 3', cost: '200', src: '/img/avengers3.jpg', gener: 'action' }
 		]
@@ -104,11 +139,12 @@ function selectedMovie(movie) {
 			{#each data as d}
 				{#each d.movies as m}
 					<div class="div3">
-						<a href="{`/seat-layout?movieName=${m.name}&price=${m.cost}`}"
+						<a href="{`/seat-layout?movieName=${m.name}&movieTime=${m.time}`}"
 							><img src="{m.src}" alt="{m.name} *" class="imgs" />
 							<h2 class="text-center text-2xl "><b>{m.name}</b></h2></a>
 						<!-- <p class="text-center text-2xl "><b>₹{m.cost}</b></p> -->
 						<p class="text-center text-2xl text-black">{m.gener}</p>
+						<p class="text-center text-2xl text-black">{m.time}</p>
 					</div>
 				{/each}
 			{/each}

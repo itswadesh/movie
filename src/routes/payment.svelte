@@ -84,13 +84,15 @@ export async function load({ url, params, fetch }) {
 	const bookedSeats = url.searchParams.get('bookedSeats')
 	const count = url.searchParams.get('count')
 	const total = url.searchParams.get('total')
+	const movieTime = url.searchParams.get('movieTime')
 	return {
 		props: {
 			movieName,
 			price,
 			bookedSeats,
 			count,
-			total
+			total,
+			movieTime
 		}
 	}
 }
@@ -99,7 +101,7 @@ export async function load({ url, params, fetch }) {
 <script>
 // import { identity } from 'svelte/internal'
 
-export let bookedSeats, count, total, movieName
+export let bookedSeats, count, total, movieName, movieTime
 let yes = false
 total = +total
 let convenient = 22
@@ -159,6 +161,7 @@ function promoCheck(promo) {
 			<div>Booked seats are: {bookedSeats}</div>
 			<div>total number of seats: {count}</div>
 			<div>Total ammount: {total}</div>
+			<div>Movie time slot: {movieTime}</div>
 		</div>
 		<div class=" col-start-4 m-2 p-2 ">
 			<div><b>Total cost for seats</b> = {total}</div>
@@ -218,7 +221,7 @@ function promoCheck(promo) {
 				<button class="m-2 bg-yellow-300 p-2"
 					><b>Continue &emsp</b> <b class="text-green-500">✔</b></button>
 				<a
-					href="{`/seat-layout?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}`}"
+					href="{`/seat-layout?movieName=${movieName}&bookedSeats=${bookedSeats}&count=${bookedSeats.length}&total=${total}&movieTime=${movieTime}`}"
 					class="m-2 bg-red-100 p-2"><b>Cancel &emsp </b> <b>❌</b></a>
 			</div>
 		</div>
