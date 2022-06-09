@@ -1,9 +1,16 @@
 <script>
+import { each } from 'svelte/internal'
+
 let popup = { show: false }
+let seat = { show: false }
 let rows = 5
 let coloums = 5
+
 function showing() {
 	popup.show = !popup.show
+}
+function seating() {
+	seat.show = !seat.show
 }
 </script>
 
@@ -30,12 +37,18 @@ function showing() {
 		<div
 			class="fixed inset-0 mt-48 ml-10 flex h-72 w-60 flex-col items-center justify-center rounded-md bg-gray-500 shadow-sm">
 			<label for="rows">Enter number of rows</label>
-			<input type="number" name="rows" class="rounded-md" />
+			<input bind:value="{rows}" type="number" name="rows" class="rounded-md" />
 			<label for="coloums">Enter number of coloums</label>
-			<input type="number" name="coloums" class="rounded-md" />
-			<button class=" mt-4 rounded-md border-2 px-2 hover:bg-slate-400" type="button"
-				>submit</button>
+			<input bind:value="{coloums}" type="number" name="coloums" class="rounded-md" />
+			<button
+				class=" mt-4 rounded-md border-2 px-2 hover:bg-slate-400"
+				type="button"
+				on:click="{seating}">submit</button>
 		</div>
 	{/if}
-	<div></div>
+	{#if seat.show}
+		<div
+			class="fixed inset-0 mt-96 ml-96 flex h-10 w-8 flex-col items-center justify-center rounded-md border-2 bg-slate-200">
+		</div>
+	{/if}
 </div>
