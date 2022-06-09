@@ -1,43 +1,41 @@
-<ul class="flex h-24 justify-end space-x-10 bg-teal-500 px-28 py-10 text-white ">
+<script>
+let popup = { show: false }
+let rows = 5
+let coloums = 5
+function showing() {
+	popup.show = !popup.show
+}
+</script>
+
+<ul class="justify-centre flex h-24 space-x-10 bg-gray-900 px-16 py-8 text-white ">
 	<li class="cursor-pointer hover:underline">Home</li>
 	<li class="cursor-pointer hover:underline">catalouge</li>
 	<li class="cursor-pointer hover:underline">contact us</li>
 </ul>
-<div class="h-screen bg-teal-100">
-	<p class=" px-5 pt-5">
-		Name of the screen :
-		<input type="text" class="ml-4 rounded-md" />
-	</p>
-	<div class="mt-5 px-5 pt-5">
-		<p>
-			Movies displayed :
-			<input type="text" class="ml-4 rounded-md" />
-		</p>
+<div class=" h-screen bg-gray-700">
+	<div class="  h-screen  text-center">
+		<label for="layout" class="text-center text-white"> set layout </label>
+		<select name="layout" id="dropdown" class="ml-5 rounded-md">
+			<option value="screen 1" selected>screen 1</option>
+			<option value="screen 2">screen 2</option>
+			<option value="screen 3">screen 3</option>
+		</select>
+		<button
+			type="button"
+			class="rounded-md border-2 bg-slate-300 px-2 text-slate-600 hover:bg-slate-400"
+			on:click="{showing}">
+			set layout</button>
 	</div>
-	<div class="mt-5 px-5 pt-5">
-		<p>
-			upload poster :
-			<input type="file" class="ml-4 rounded-md" alt="poster" />
-		</p>
-	</div>
-	<div class="mt-5 px-5 pt-5">
-		<p>
-			Show Date :
-			<input type="date" class="ml-4 rounded-md" />
-		</p>
-	</div>
-	<div class="mt-5 px-5 pt-5">
-		<p>
-			Show Time :
-			<input type="time" class="ml-4 rounded-md" />
-		</p>
-	</div>
-	<ul class="ml-48 mt-5">
-		<button class=" m-4 rounded-md border-2 border-black bg-teal-100 p-4"> save show </button>
-	</ul>
-	<ul class="ml-48 ">
-		<button class=" m-4 rounded-md border-2 border-black bg-teal-100 p-4">
-			save and add layout
-		</button>
-	</ul>
+	{#if popup.show}
+		<div
+			class="fixed inset-0 mt-48 ml-10 flex h-72 w-60 flex-col items-center justify-center rounded-md bg-gray-500 shadow-sm">
+			<label for="rows">Enter number of rows</label>
+			<input type="number" name="rows" class="rounded-md" />
+			<label for="coloums">Enter number of coloums</label>
+			<input type="number" name="coloums" class="rounded-md" />
+			<button class=" mt-4 rounded-md border-2 px-2 hover:bg-slate-400" type="button"
+				>submit</button>
+		</div>
+	{/if}
+	<div></div>
 </div>
